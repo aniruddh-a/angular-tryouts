@@ -1,0 +1,44 @@
+
+<div class="container" style="margin-top:25px;">
+    <div class="row">
+        <form name="addCityForm" ng-submit="addCity()">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input type="text" ng-model="cityToAdd" class="form-control"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" name="submit">Add
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="row"  ng-show="loadingData.length > 0">
+        <p>Loading weather for <span>{{loadingData.toString()}}</span></p>
+    </div>
+
+    <div class="row" style="margin-top:25px;">
+        <div ng-repeat="weatherForCity in weatherForCities">
+        <div class="col-md-3" style="margin-top:25px;">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-3 box-style">
+                        <div class="row bottom-border">
+                            <p>
+                            <span>{{weatherForCity.listForDisplay[0].city.name}}</span> <span><button class="btn btn-danger btn-xs" ng-click="removeCity(weatherForCity.listForDisplay[0].city.name,'true')"><span class="glyphicon glyphicon-minus-sign"></span></button></span>
+                            </p>
+                        </div>
+                        <div class="scrollbar-height-150">
+                            <div class="row" ng-repeat="obj in weatherForCity.listForDisplay">
+                            Temp : {{obj.main.temp}}
+                            Date : {{obj.redableDate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
